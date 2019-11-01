@@ -1,61 +1,61 @@
-import { tiposTareas } from '../actions/types';
+import { tiposProductos } from '../actions/types';
 
 const ESTADO_INICIAL = {
-  listaTareas: [],
-  tarea: {},
+  listaProductos: [],
+  producto: {},
   cargando: false,
   errores: {}
 };
 
 export default function(state = ESTADO_INICIAL, action) {
   switch (action.type) {
-    case tiposTareas.BUSCAR_TAREAS_TERMINADA:
+    case tiposProductos.BUSCAR_PRODUCTOS_TERMINADA:
       return {
         ...state,
-        listaTareas: action.payload.data,
+        listaProductos: action.payload.data,
         cargando: false
       };
 
-    case tiposTareas.BUSCAR_TAREAS_PENDIENTE:
+    case tiposProductos.BUSCAR_PRODUCTOS_PENDIENTE:
       return {
         ...state,
         cargando: true
       };
 
-    case tiposTareas.BUSCAR_TAREAS_RECHAZADA:
+    case tiposProductos.BUSCAR_PRODUCTOS_RECHAZADA:
       return {
         ...state,
         cargando: false
       };
 
-    case tiposTareas.BUSCAR_TAREAS_POR_ID_TERMINADA: {
+    case tiposProductos.BUSCAR_PRODUCTOS_POR_ID_TERMINADA: {
       return {
         ...state,
-        tarea: action.payload.data,
+        producto: action.payload.data,
         cargando: false
       };
     }
 
-    case tiposTareas.BUSCAR_TAREAS_POR_ID_PENDIENTE: {
+    case tiposProductos.BUSCAR_PRODUCTOS_POR_ID_PENDIENTE: {
       return {
         ...state,
-        tarea: {},
+        producto: {},
         cargando: true
       };
     }
 
-    case tiposTareas.BUSCAR_TAREAS_POR_ID_RECHAZADA: {
+    case tiposProductos.BUSCAR_PRODUCTOS_POR_ID_RECHAZADA: {
       return {
         ...state,
         cargando: false
       };
     }
 
-    case tiposTareas.ELIMINAR_TAREA: {
+    case tiposProductos.ELIMINAR_PRODUCTO: {
       const id = action.payload._id;
       return {
         ...state,
-        listaTareas: state.listaTareas.filter(item => item._id !== id)
+        listaProductos: state.listaProductos.filter(item => item._id !== id)
       };
     }
 

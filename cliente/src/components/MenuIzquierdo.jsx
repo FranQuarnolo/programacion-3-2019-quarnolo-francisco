@@ -18,6 +18,13 @@ class MenuIzquierdo extends Component {
                 Tareas
               </NavLink>
             </li>
+
+            <li className='nav-item'>
+              <NavLink exact={true} className='nav-link' to={'/productos'}>
+                Productos
+              </NavLink>
+            </li>
+
           </ul>
         </div>
       </nav>

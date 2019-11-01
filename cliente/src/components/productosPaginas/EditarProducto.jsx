@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { SubmissionError } from 'redux-form';
-import FormularioTarea from './FormularioTarea';
+import FormularioProducto from './FormularioProducto';
 import {
-  buscarTareaPorId,
-  actualizarTarea} from '../../actions/AccionesTareas';
+  buscarProductoPorId,
+  actualizarProducto} from '../../actions/AccionesProductos';
 
-class EditarTarea extends Component {
+class EditarProducto extends Component {
   state = {
     redirect: false
   };
@@ -16,13 +16,13 @@ class EditarTarea extends Component {
     const { id } = this.props.match.params;
 
     if (id) {
-      this.props.buscarTareaPorId(id);
+      this.props.buscarProductoPorId(id);
     }
   }
 
-  submit = tarea => {
+  submit = producto => {
     return this.props
-      .actualizarTarea(tarea)
+      .actualizarProducto(producto)
       .then(response => this.setState({ redirect: true }))
       .catch(err => {
         throw new SubmissionError(this.props.errores);
@@ -32,13 +32,13 @@ class EditarTarea extends Component {
   render() {
     return (
       <div>
-        <h2>Editar tarea</h2>
+        <h2>Editar producto</h2>
         <div>
           {this.state.redirect ? (
-            <Redirect to='/tareas' />
+            <Redirect to='/productos' />
           ) : (
-            <FormularioTarea
-              tarea={this.props.tarea}
+            <FormularioProducto
+              producto={this.props.producto}
               cargando={this.props.cargando}
               onSubmit={this.submit}
             />
@@ -51,13 +51,13 @@ class EditarTarea extends Component {
 
 function mapStateToProps(state) {
   return {
-    tarea: state.tareasDs.tarea,
-    cargando: state.tareasDs.cargando,
-    errore: state.tareasDs.errores
+    producto: state.productosDs.producto,
+    cargando: state.productosDs.cargando,
+    errore: state.productosDs.errores
   };
 }
 
 export default connect(
   mapStateToProps,
-  { buscarTareaPorId, actualizarTarea }
-)(EditarTarea);
+  { buscarProductoPorId, actualizarProducto }
+)(EditarProducto);

@@ -36,7 +36,7 @@ export const buscarTareaPorId = id => async dispatch => {
 };
 
 export const actualizarTarea = tarea => async dispatch => {
-  var res = await axios.put(`/api/tareas/${tarea._id}`, tarea);
+  const res = await axios.put(`/api/tareas/${tarea._id}`, tarea);
   return dispatch({
     type: tiposTareas.ACTUALIZAR_TAREA,
     payload: res
@@ -44,7 +44,12 @@ export const actualizarTarea = tarea => async dispatch => {
 };
 
 export const eliminarTareas = id => async dispatch => {
-  var res = await axios.delete(`/api/tareas/${id}`);
+  
+  let res = await axios.delete(`/api/tareas/${id}`);
+
+  if (res.status === 204) {
+    res._id = id;
+  }
 
   return dispatch({
     type: tiposTareas.ELIMINAR_TAREA,

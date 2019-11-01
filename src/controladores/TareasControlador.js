@@ -38,6 +38,7 @@ module.exports = app => {
     });
 
     try {
+      //objeto de mongose y puede demorar y espera hasta que termine y captura la exc
       let nuevaTarea = await tarea.save();
 
       res.status(201).send(nuevaTarea);
@@ -53,7 +54,7 @@ module.exports = app => {
   app.put('/api/tareas/:id', async (req, res) => {
     const id = req.params.id;
 
-    const datosTarea = req.body || {};
+    const datosTarea = req.body || {}; //objeto vacío 
     delete datosTarea.fechaCreacion;
     datosTarea.fechaActualizacion = new Date();
 
@@ -88,7 +89,7 @@ module.exports = app => {
       if (!tarea) {
         return res.status(404).send({ mensaje: 'Tarea no encontrada' });
       } else {
-        return res.status(204).send({ mensaje: 'Registro eliminado' }); // 204 do not use content
+        return res.status(204).send({ message: 'Tarea Eliminada' }); // 204 do not use content
       }
     } catch (err) {
       return res.status(500).send({

@@ -3,11 +3,9 @@ const { Schema } = mongoose;
 
 const productoSchema = new Schema({
   nombre: String,
-  descripcion: String,
-  precio: String,
-  stock: Boolean,
-  codigo: String,
   marca: String,
+  descripcion: String,
+  precio: Number
 });
 
 mongoose.model('productos', productoSchema);

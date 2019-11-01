@@ -24,13 +24,13 @@ const validaciones = valores => {
   return errores;
 };
 
-class FormularioTarea extends Component {
-  componentWillReceiveProps = nextProps => {
+class FormularioProducto extends Component {
+componentWillReceiveProps = nextProps => {
     // Load Contact Asynchronously
-    const { tarea } = nextProps;
-    if (tarea._id !== this.props.tarea._id) {
+    const { producto } = nextProps;
+    if (producto.id !== this.props.producto._id) {
       // Initialize form only once
-      this.props.initialize(tarea);
+      this.props.initialize(producto);
       this.estaActualizando = true;
     }
   };
@@ -67,12 +67,24 @@ class FormularioTarea extends Component {
           label='Nombre'
         />
         <Field
+          name='marca'
+          type='text'
+          component={this.renderField}
+          label='Marca'
+        />
+        <Field
           name='descripcion'
           type='text'
           component={this.renderField}
           label='Descripcion'
         />
-        <Link className='btn btn-light mr-2' to='/tareas'>
+        <Field
+          name='precio'
+          type='number'
+          component={this.renderField}
+          label='Precio'
+        />
+        <Link className='btn btn-light mr-2' to='/productos'>
           Cancelar
         </Link>
         <button className='btn btn-primary mr-2' type='submit'>
@@ -83,6 +95,6 @@ class FormularioTarea extends Component {
   }
 }
 
-export default reduxForm({ form: 'tarea', validate: validaciones })(
-  FormularioTarea
+export default reduxForm({ form: 'producto', validate: validaciones })(
+  FormularioProducto
 );

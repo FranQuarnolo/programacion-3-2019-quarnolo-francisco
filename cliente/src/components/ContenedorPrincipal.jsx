@@ -6,6 +6,10 @@ import ListarTarea from './tareasPaginas/ListarTarea';
 import NuevaTarea from './tareasPaginas/NuevaTarea';
 import VerTarea from './tareasPaginas/VerTarea';
 import EditarTarea from './tareasPaginas/EditarTarea';
+import ListarProducto from './productosPaginas/ListarProducto';
+import NuevoProducto from './productosPaginas/NuevoProducto';
+import VerProducto  from './productosPaginas/VerProducto';
+import EditarProducto from './productosPaginas/EditarProducto';
 
 class ContenedorPrincipal extends Component {
   render() {
@@ -18,6 +22,10 @@ class ContenedorPrincipal extends Component {
             <Route exact path='/tareas/nueva' component={NuevaTarea} />
             <Route exact path='/tareas/:id/ver' component={VerTarea} />
             <Route exact path='/tareas/:id/editar' component={EditarTarea} />
+            <Route exact path='/productos' component={ListarProducto} />
+            <Route exact path='/productos/nuevo' component={NuevoProducto} />
+            <Route exact path='/productos/:id/ver' component={VerProducto} />
+            <Route exact path='/productos/:id/editar' component={EditarProducto}/>
           </main>
         </div>
       </div>

@@ -19,7 +19,7 @@ module.exports = app => {
       } else {
         res
           .status(404)
-          .send({ mensaje: `El producto con id '${id}' no ha sido encontrado.` });
+          .send({ mensaje: `El producto con id '${id}' no ha sido encontrada.` });
       }
     } catch (e) {
       res.status(500).send({ mensaje: `Error en el servidor.\n\n${e}` });
@@ -27,18 +27,17 @@ module.exports = app => {
   });
 
   app.post('/api/productos', async (req, res) => {
-    const { nombre, descripcion, stock } = req.body;
+    const { nombre, marca, precio, descripcion } = req.body;
 
     const producto = new Producto({
       nombre,
-      descripcion,
-      precio,
-      stock,
-      codigo,
       marca,
+      descripcion,
+      precio
     });
 
     try {
+      //objeto de mongose y puede demorar y espera hasta que termine y captura la exc
       let nuevoProducto = await producto.save();
 
       res.status(201).send(nuevoProducto);
@@ -51,35 +50,35 @@ module.exports = app => {
     }
   });
 
-  /* app.put('/api/prodcutos/:id', async (req, res) => {
+  app.put('/api/productos/:id', async (req, res) => {
     const id = req.params.id;
 
-    const datosTarea = req.body || {};
-    delete datosTarea.fechaCreacion;
-    datosTarea.fechaActualizacion = new Date();
+    const datosProducto = req.body || {}; //objeto vacío 
+    delete datosProducto.findByIdAndUpdate;
+  
 
     try {
-      let tarea = await Tarea.findByIdAndUpdate({ _id: id }, datosTarea, {
+      let producto = await Producto.findByIdAndUpdate({ _id: id }, datosProducto, {
         new: true
       });
 
-      if (!tarea) {
+      if (!producto) {
         res.status(404).send({
-          mensaje: `Error cuando se actualizaba la tarea con id ${id}.\n\n${e}`
+          mensaje: `Error cuando se actualizaba el prod con id ${id}.\n\n${e}`
         });
       } else {
-        res.status(200).send(tarea);
+        res.status(200).send(producto);
       }
     } catch (err) {
       if (err.name === 'MongoError') {
         res.status(409).send({ mensaje: err.message });
       }
       res.status(500).send({
-        mensaje: `Error desconocido.\n\n Error desconocido cuando se actualizaba la tarea id='${id}'`
+        mensaje: `Error desconocido.\n\n Error desconocido cuando se actualizaba el producto id='${id}'`
       });
     }
   });
- */
+
   app.delete('/api/productos/:id', async (req, res) => {
     const id = req.params.id;
 
@@ -89,40 +88,22 @@ module.exports = app => {
       if (!producto) {
         return res.status(404).send({ mensaje: 'Producto no encontrado' });
       } else {
-        return res.status(204).send({ mensaje: 'Registro eliminado' }); // 204 do not use content
+        return res.status(204).send({ message: 'Producto Eliminado' }); // 204 do not use content
       }
     } catch (err) {
       return res.status(500).send({
-        mensaje: `Error desconocido cuando se borraba el producto con id '${id}'.`
+        mensaje: `Error desconocido cuando se borraba producto con id '${id}'.`
       });
     }
   });
- 
-  /*  app.put('/api/tareas/:id/estaFinalizada/cambiar', async (req, res) => {
-    const id = req.params.id;
-
-    const tarea = await Tarea.findOne({ _id: id });
-
-    if (!tarea) {
-      return res.status(404).send({
-        mensaje: `La tarea con id ${id} no ha sido encontrada.\n\n${e}`
-      });
-    }
-
-    if (tarea) {
-      tarea.estaFinalizada = !tarea.estaFinalizada;
-      tarea.fechaActualizacion = new Date();
-      tarea.save();
-      res.status(200).send(tarea);
-    }
-  }); */
-
-  app.get('/api/producto/consulta', async (req, res) => {
+  app.get('/api/productos/consulta', async (req, res) => {
     try {
       var regExpTerm = new RegExp(req.query.consulta, 'i');
       var regExpSearch = [
         { nombre: { $regex: regExpTerm } },
-        { descripcion: { $regex: regExpTerm } }
+        { marca: { $regex: regExpTerm } },
+        { descripcion: { $regex: regExpTerm } },
+        { precio: { $regex: regExpTerm } }
       ];
       const productos = await Producto.find({ $or: regExpSearch });
 
