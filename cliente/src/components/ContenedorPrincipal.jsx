@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import Bienvenidos from './bienvenidosPaginas/Bienvenidos';
+
 import ListarTarea from './tareasPaginas/ListarTarea';
 import NuevaTarea from './tareasPaginas/NuevaTarea';
 import VerTarea from './tareasPaginas/VerTarea';
@@ -12,6 +13,10 @@ import NuevoProducto from './productosPaginas/NuevoProducto';
 import VerProducto  from './productosPaginas/VerProducto';
 import EditarProducto from './productosPaginas/EditarProducto';
 
+import ListarServicio from './serviciosPaginas/ListarServicio';
+import NuevoServicio from './serviciosPaginas/NuevoServicio';
+import VerServicio from './serviciosPaginas/VerServicio';
+import EditarServicio from './serviciosPaginas/EditarServicio';
 
 
 class ContenedorPrincipal extends Component {
@@ -31,6 +36,10 @@ class ContenedorPrincipal extends Component {
             <Route exact path='/productos/:id/ver' component={VerProducto} />
             <Route exact path='/productos/:id/editar' component={EditarProducto}/>
 
+            <Route exact path='/servicios' component={ListarServicio} />
+            <Route exact path='/servicios/nuevo' component={NuevoServicio} />
+            <Route exact path='/servicios/:id/ver' component={VerServicio} />
+            <Route exact path='/servicios/:id/editar' component={EditarServicio}/>
 
           </main>
         </div>

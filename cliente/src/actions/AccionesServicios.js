@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { tiposServicios } from './types';
 
-export const buscarServicio = () => async dispatch => {
+export const buscarServicios = () => async dispatch => {
   dispatch({ type: tiposServicios.BUSCAR_SERVICIOS_PENDIENTE});
 
   try {
@@ -43,7 +43,7 @@ export const actualizarServicio = servicio => async dispatch => {
   });
 };
 
-export const eliminarServicio = id => async dispatch => {
+export const eliminarServicios = id => async dispatch => {
 
   let res = await axios.delete(`/api/servicios/${id}`);
 

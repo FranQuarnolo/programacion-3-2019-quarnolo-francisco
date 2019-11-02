@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 require('./modelos/Tarea');
 require('./modelos/Producto');
+require('./modelos/Servicio');
+
 
 
 const MONGO_URI = `mongodb://localhost:27017/programacion3-2019`;
@@ -17,6 +19,9 @@ require('./controladores/TareasControlador')(app);
 
 app.use(bodyParser.json());
 require('./controladores/ProductosControlador')(app);
+
+app.use(bodyParser.json());
+require('./controladores/ServiciosControlador')(app);
 
 
 const PORT = 5000;
