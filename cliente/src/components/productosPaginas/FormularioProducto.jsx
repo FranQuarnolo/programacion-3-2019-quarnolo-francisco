@@ -28,7 +28,7 @@ class FormularioProducto extends Component {
 componentWillReceiveProps = nextProps => {
     // Load Contact Asynchronously
     const { producto } = nextProps;
-    if (producto.id !== this.props.producto._id) {
+    if (producto._id !== this.props.producto._id) {
       // Initialize form only once
       this.props.initialize(producto);
       this.estaActualizando = true;
