@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-require('./modelos/Tarea');
-require('./modelos/Producto');
-require('./modelos/Servicio');
+require('./modelos/TareaModel');
+require('./modelos/ProductoModel');
+require('./modelos/ServicioModel');
 
 
 
