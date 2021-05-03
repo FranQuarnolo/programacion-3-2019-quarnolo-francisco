@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 const Producto = mongoose.model('productos');
 
 module.exports = app => {
+  //Obtener todos los productos
   app.get('/api/productos', async (req, res) => {
     console.info('Obteniendo productos');
     const productos = await Producto.find({});
     res.send(productos);
   });
 
+  //Obtener producto mediante ID
   app.get('/api/productos/:id', async (req, res) => {
     try {
       const id = req.params.id;
@@ -26,6 +28,7 @@ module.exports = app => {
     }
   });
 
+  //Creando un nuevo producto
   app.post('/api/productos', async (req, res) => {
     const { nombre, marca, precio, descripcion } = req.body;
 
@@ -50,6 +53,7 @@ module.exports = app => {
     }
   });
 
+  //Actualizar producto por el id
   app.put('/api/productos/:id', async (req, res) => {
     const id = req.params.id;
 
@@ -79,6 +83,8 @@ module.exports = app => {
     }
   });
 
+
+//Borrar producto
   app.delete('/api/productos/:id', async (req, res) => {
     const id = req.params.id;
 
@@ -96,6 +102,8 @@ module.exports = app => {
       });
     }
   });
+
+  
   app.get('/api/productos/consulta', async (req, res) => {
     try {
       var regExpTerm = new RegExp(req.query.consulta, 'i');
