@@ -30,16 +30,15 @@ module.exports = app => {
 
   //Creando un nuevo producto
   app.post('/api/productos', async (req, res) => {
-    const { nombre, paginas, precio, stock, sku } = req.body;
+    const { nombre, pages, price, stock, sku, category } = req.body;
 
     const producto = new Producto({
       nombre,
-      paginas,
-      precio,
+      pages,
+      price,
       stock,
       sku,
-      category,
-      tags
+      category
     });
 
     try {
@@ -112,8 +111,11 @@ module.exports = app => {
       var regExpTerm = new RegExp(req.query.consulta, 'i');
       var regExpSearch = [
         { nombre: { $regex: regExpTerm } },
-        { marca: { $regex: regExpTerm } },
-        { precio: { $regex: regExpTerm } }
+        { pages: { $regex: regExpTerm } },
+        { price: { $regex: regExpTerm } },
+        { stock: { $regex: regExpTerm } },
+        { sku: { $regex: regExpTerm } },
+        { category: { $regex: regExpTerm } }
       ];
       const productos = await Producto.find({ $or: regExpSearch });
 

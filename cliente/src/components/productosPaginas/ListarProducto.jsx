@@ -12,7 +12,6 @@ class ListarProducto extends Component {
     return this.props.listaProductos.map(producto => {
       return (
         <tr key={producto._id}>
-
           <td>{producto.nombre}</td>
           <td>{producto.pages}</td>
           <td>{producto.price}</td>

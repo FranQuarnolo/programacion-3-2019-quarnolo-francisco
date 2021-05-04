@@ -67,13 +67,13 @@ componentWillReceiveProps = nextProps => {
           label='Nombre'
         />
         <Field
-          name='paginas'
+          name='pages'
           type='number'
           component={this.renderField}
           label='Paginas'
         />
         <Field
-          name='precio'
+          name='price'
           type='number'
           component={this.renderField}
           label='Precio'
@@ -95,12 +95,6 @@ componentWillReceiveProps = nextProps => {
           type='text'
           component={this.renderField}
           label='Category'
-        />
-        <Field
-          name='tags'
-          type='text'
-          component={this.renderField}
-          label='tags'
         />
         <Link className='btn btn-light mr-2' to='/productos'>
           Cancelar
