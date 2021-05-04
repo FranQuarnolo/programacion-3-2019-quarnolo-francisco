@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import './dashboard.css';
+import '../styles/app.css';
 import Encabezado from './Encabezado';
 import MenuIzquierdo from './MenuIzquierdo';
 import ContenedorPrincipal from './ContenedorPrincipal';
