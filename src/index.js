@@ -23,6 +23,21 @@ require('./controladores/ProductosControlador')(app);
 app.use(bodyParser.json());
 require('./controladores/ServiciosControlador')(app);
 
-
 const PORT = 5000;
 app.listen(PORT, () => console.info(`Iniciando en puerto ${PORT}`));
+//............................................................
+
+app.set("ClaveSecreta","miclave2021")
+//validar usuario
+function validateUser(req,res,next){
+    jwt.verify(req.headers['my-token'],req.app.get("ClaveSecreta"),function(err,decoded){
+      if(err){
+        res.json({message:err.message})
+      }else{
+        console.log(decoded)
+        req.body.tokenData = decoded;
+        next();
+      }
+    })
+  }
+  app.validateUser = validateUser;
