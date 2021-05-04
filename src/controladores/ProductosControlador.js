@@ -30,13 +30,16 @@ module.exports = app => {
 
   //Creando un nuevo producto
   app.post('/api/productos', async (req, res) => {
-    const { nombre, marca, precio, descripcion } = req.body;
+    const { nombre, paginas, precio, stock, sku } = req.body;
 
     const producto = new Producto({
       nombre,
-      marca,
-      descripcion,
-      precio
+      paginas,
+      precio,
+      stock,
+      sku,
+      category,
+      tags
     });
 
     try {
@@ -110,7 +113,6 @@ module.exports = app => {
       var regExpSearch = [
         { nombre: { $regex: regExpTerm } },
         { marca: { $regex: regExpTerm } },
-        { descripcion: { $regex: regExpTerm } },
         { precio: { $regex: regExpTerm } }
       ];
       const productos = await Producto.find({ $or: regExpSearch });

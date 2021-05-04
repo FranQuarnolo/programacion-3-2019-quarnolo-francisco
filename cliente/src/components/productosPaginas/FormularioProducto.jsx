@@ -67,22 +67,40 @@ componentWillReceiveProps = nextProps => {
           label='Nombre'
         />
         <Field
-          name='marca'
-          type='text'
+          name='paginas'
+          type='number'
           component={this.renderField}
-          label='Marca'
-        />
-        <Field
-          name='descripcion'
-          type='text'
-          component={this.renderField}
-          label='Descripcion'
+          label='Paginas'
         />
         <Field
           name='precio'
           type='number'
           component={this.renderField}
           label='Precio'
+        />
+        <Field
+          name='stock'
+          type='number'
+          component={this.renderField}
+          label='Stock'
+        />
+        <Field
+          name='sku'
+          type='text'
+          component={this.renderField}
+          label='Sku'
+        />
+        <Field
+          name='category'
+          type='text'
+          component={this.renderField}
+          label='Category'
+        />
+        <Field
+          name='tags'
+          type='text'
+          component={this.renderField}
+          label='tags'
         />
         <Link className='btn btn-light mr-2' to='/productos'>
           Cancelar

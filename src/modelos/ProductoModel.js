@@ -15,7 +15,6 @@ const productSchema = new mongoose.Schema({
       minlength: [3,errorMensaje.GENERAL.minlength],
       maxlength: [32,errorMensaje.GENERAL.maxlength]
   },
-  description: String,
   pages: {
       type:Number,
       required: false,

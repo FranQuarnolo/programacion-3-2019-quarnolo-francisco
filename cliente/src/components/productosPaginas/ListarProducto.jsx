@@ -14,9 +14,10 @@ class ListarProducto extends Component {
         <tr key={producto._id}>
 
           <td>{producto.nombre}</td>
-          <td>{producto.marca}</td>
-          <td>{producto.descripcion}</td>
-          <td>{producto.precio}</td>
+          <td>{producto.pages}</td>
+          <td>{producto.price}</td>
+          <td>{producto.stock}</td>
+          <td>{producto.sku}</td>
           <td>
             <Link to={`/productos/${producto._id}/ver`} className='mr-2'>
               Ver
@@ -61,9 +62,10 @@ class ListarProducto extends Component {
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Marca</th>
-                <th>Descripcion</th>
+                <th>Paginas</th>
                 <th>Precio</th>
+                <th>Stock</th>
+                <th>Sku</th>
               </tr>
             </thead>
             <tbody>{this.crearFilas()}</tbody>
