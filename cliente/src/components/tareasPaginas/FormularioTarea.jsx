@@ -67,10 +67,16 @@ class FormularioTarea extends Component {
           label='Nombre'
         />
         <Field
-          name='descripcion'
+          name='monto'
           type='text'
           component={this.renderField}
-          label='Descripcion'
+          label='Total'
+        />
+        <Field
+          name='estaFinalizada'
+          type='text'
+          component={this.renderField}
+          label='Finalizada'
         />
         <Link className='btn btn-light mr-2' to='/tareas'>
           Cancelar

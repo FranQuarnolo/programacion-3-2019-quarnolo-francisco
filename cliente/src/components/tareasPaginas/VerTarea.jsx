@@ -15,7 +15,7 @@ class VerTarea extends Component {
   render() {
     return (
       <div>
-        <h2>Ver Tarea</h2>
+        <h2>Ver Venta</h2>
 
         <br />
 
@@ -28,9 +28,9 @@ class VerTarea extends Component {
 
         <div className='row'>
           <div className='col-sm-2'>
-            <p className='font-weight-bold text-right'>Descripcion:</p>
+            <p className='font-weight-bold text-right'>Total:</p>
           </div>
-          <div className='col-sm-10'>{this.props.tarea.descripcion}</div>
+          <div className='col-sm-10'>{this.props.tarea.monto}</div>
         </div>
 
         <div className='row'>
@@ -38,7 +38,7 @@ class VerTarea extends Component {
             <p className='font-weight-bold text-right'>Finalizada:</p>
           </div>
           <div className='col-sm-10'>
-            {this.props.tarea.estaFinalizada ? 'si' : 'no'}
+            {this.props.tarea.estaFinalizada ? 'Si' : 'No'}
           </div>
         </div>
 

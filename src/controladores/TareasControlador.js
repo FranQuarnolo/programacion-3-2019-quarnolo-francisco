@@ -27,14 +27,14 @@ module.exports = app => {
   });
 
   app.post('/api/tareas', async (req, res) => {
-    const { nombre, descripcion, estaFinalizada } = req.body;
+    const { nombre, monto, estaFinalizada } = req.body;
 
     const tarea = new Tarea({
       nombre,
-      descripcion,
+      monto,
       estaFinalizada,
-      fechaCreacion: new Date(),
-      fechaActualizacion: new Date()
+      /*fechaCreacion: new Date(),
+      fechaActualizacion: new Date()*/
     });
 
     try {
@@ -55,8 +55,8 @@ module.exports = app => {
     const id = req.params.id;
 
     const datosTarea = req.body || {}; //objeto vacío 
-    delete datosTarea.fechaCreacion;
-    datosTarea.fechaActualizacion = new Date();
+    /*delete datosTarea.fechaCreacion;
+    datosTarea.fechaActualizacion = new Date();*/
 
     try {
       let tarea = await Tarea.findByIdAndUpdate({ _id: id }, datosTarea, {
@@ -111,7 +111,7 @@ module.exports = app => {
 
     if (tarea) {
       tarea.estaFinalizada = !tarea.estaFinalizada;
-      tarea.fechaActualizacion = new Date();
+      /*tarea.fechaActualizacion = new Date();*/
       tarea.save();
       res.status(200).send(tarea);
     }
@@ -122,7 +122,7 @@ module.exports = app => {
       var regExpTerm = new RegExp(req.query.consulta, 'i');
       var regExpSearch = [
         { nombre: { $regex: regExpTerm } },
-        { descripcion: { $regex: regExpTerm } }
+        { monto: { $regex: regExpTerm } }
       ];
       const tareas = await Tarea.find({ $or: regExpSearch });
 

@@ -27,7 +27,7 @@ class NuevaTarea extends Component {
   render() {
     return (
       <div>
-        <h2>Nueva Tarea</h2>
+        <h2>Nueva Venta</h2>
 
         {this.state.redirect ? (
           <Redirect to='/tareas' />

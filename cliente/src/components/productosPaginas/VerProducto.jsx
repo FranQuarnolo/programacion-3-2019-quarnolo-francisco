@@ -15,45 +15,46 @@ class VerProducto extends Component {
   render() {
     return (
       <div>
-        <h2>Ver Producto</h2>
+        <h2 className='mr-2 margin-tittle-producto'>Ver Producto</h2>
 
         <br />
-
         <div className='row'>
           <div className='col-sm-2'>
-            <p className='font-weight-bold text-right'>Nombre:</p>
+            <p className='font-weight-bold text-right mr-2'>Nombre:</p>
           </div>
-          <div className='col-sm-10'>{this.props.producto.nombre}</div>
+          <div className='col-sm-10 tbody'>{this.props.producto.nombre}</div>
         </div>
-
         <div className='row'>
           <div className='col-sm-2'>
-            <p className='font-weight-bold text-right'>Marca:</p>
+            <p className='font-weight-bold text-right mr-2'>Paginas:</p>
           </div>
-          <div className='col-sm-10'>{this.props.producto.marca}</div>
+          <div className='col-sm-10 tbody'>{this.props.producto.pages}</div>
         </div>
-
         <div className='row'>
           <div className='col-sm-2'>
-            <p className='font-weight-bold text-right'>Descripcion:</p>
+            <p className='font-weight-bold text-right mr-2'>Precio:</p>
           </div>
-          <div className='col-sm-10'>{this.props.producto.descripcion}</div>
+          <div className='col-sm-10 tbody'>{this.props.producto.price}</div>
         </div>
-
         <div className='row'>
           <div className='col-sm-2'>
-            <p className='font-weight-bold text-right'>Precio:</p>
+            <p className='font-weight-bold text-right mr-2'>Stock:</p>
           </div>
-          <div className='col-sm-10'>{this.props.producto.descripcion}</div>
+          <div className='col-sm-10 tbody'>{this.props.producto.stock}</div>
         </div>
-       
         <div className='row'>
-          <Link className='btn btn-light mr-2' to='/productos'>
+          <div className='col-sm-2'>
+            <p className='font-weight-bold text-right mr-2'>Sku:</p>
+          </div>
+          <div className='col-sm-10 tbody'>{this.props.producto.sku}</div>
+        </div>
+        <div className='row'>
+          <Link className='btn btn-danger mr-2 margin-button-producto' to='/productos'>
             Volver
           </Link>
           <Link
             to={`/productos/${this.id}/editar`}
-            className='btn btn-secondary mr-2'
+            className='btn btn-info mr-2'
           >
             Editar
            </Link>

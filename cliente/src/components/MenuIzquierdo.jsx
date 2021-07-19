@@ -14,14 +14,14 @@ class MenuIzquierdo extends Component {
             </li>
 
             <li className='nav-item'>
-              <NavLink exact={true} className='nav-link' to={'/tareas'}>
-                Tareas
+              <NavLink exact={true} className='nav-link' to={'/productos'}>
+                Productos
               </NavLink>
             </li>
 
             <li className='nav-item'>
-              <NavLink exact={true} className='nav-link' to={'/productos'}>
-                Productos
+              <NavLink exact={true} className='nav-link' to={'/tareas'}>
+                Ventas
               </NavLink>
             </li>
 

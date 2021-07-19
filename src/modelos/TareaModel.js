@@ -3,10 +3,10 @@ const { Schema } = mongoose;
 
 const tareaSchema = new Schema({
   nombre: String,
-  descripcion: String,
+  monto: Number,
   estaFinalizada: Boolean,
-  fechaCreacion: Date,
-  fechaActualizacion: Date
+  /* fechaCreacion: Date,
+  fechaActualizacion: Date */
 });
 
 mongoose.model('tareas', tareaSchema);

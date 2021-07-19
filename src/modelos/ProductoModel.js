@@ -9,7 +9,7 @@ const productSchema = new Schema({
   price: Number,
   stock: Number,
   sku: String,
-  category:String
+  /* category:String */
 })
 
 mongoose.model('productos', productSchema);

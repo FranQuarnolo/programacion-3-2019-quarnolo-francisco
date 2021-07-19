@@ -10,11 +10,14 @@ class ListarTarea extends Component {
 
   crearFilas() {
     return this.props.listaTareas.map(tarea => {
+      console.log(tarea.nombre);
       return (
+        
         <tr key={tarea._id}>
-          <td>{tarea.estaFinalizada ? 'si' : 'no'}</td>
           <td>{tarea.nombre}</td>
+          <td>{tarea.monto}</td>
           <td>{tarea.fechaCreacion}</td>
+          <td>{tarea.estaFinalizada ? 'Si' : 'No'}</td>
           <td>
             <Link to={`/tareas/${tarea._id}/ver`} className='mr-2'>
               Ver
@@ -45,7 +48,7 @@ class ListarTarea extends Component {
   render() {
     return (
       <div>
-        <h2>Listando Tareas</h2>
+        <h2>Listando Ventas</h2>
 
         <p>
           <Link to='/tareas/nueva' className='btn btn-primary'>
@@ -57,9 +60,10 @@ class ListarTarea extends Component {
           <table className='table table-striped table-sm'>
             <thead>
               <tr>
-                <th>Finalizada</th>
                 <th>Nombre</th>
-                <th>Creada</th>
+                <th>Total</th>
+                <th>Fecha</th>
+                <th>Finalizada</th>
                 <th>Acciones</th>
               </tr>
             </thead>
